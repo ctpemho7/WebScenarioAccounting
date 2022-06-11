@@ -1,0 +1,1137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="WebScenarioAccountingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Actuator">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Manufacturer" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Room" Type="int" Nullable="false" />
+          <Property Name="SubType" Type="int" Nullable="false" />
+          <Property Name="TerminationDate" Type="date" />
+        </EntityType>
+        <EntityType Name="ClassifierSensor">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ClassifierSex">
+          <Key>
+            <PropertyRef Name="SexID" />
+          </Key>
+          <Property Name="SexID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SexName" Type="nvarchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ClassifierSign">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SignValue" Type="nvarchar" MaxLength="5" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ClassifierSubTypeThing">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TypeID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ClassifierThingCommand">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SubTypeID" Type="int" Nullable="false" />
+          <Property Name="Text" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ClassifierTimeWeather">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TypeID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ClassifierTypeThing">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ClassifierUserType">
+          <Key>
+            <PropertyRef Name="TypeID" />
+          </Key>
+          <Property Name="TypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TypeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ClassifierValue">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Label" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Command">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ScenarioID" Type="int" Nullable="false" />
+          <Property Name="isElse" Type="bit" Nullable="false" />
+          <Property Name="ThingID" Type="int" Nullable="false" />
+          <Property Name="CommandID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Room">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Floor" Type="int" Nullable="false" />
+          <Property Name="Area" Type="float" Nullable="false" />
+          <Property Name="CreationDate" Type="date" Nullable="false" />
+          <Property Name="TerminationDate" Type="date" />
+        </EntityType>
+        <EntityType Name="Scenario">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Author" Type="int" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="CreationDate" Type="date" Nullable="false" />
+          <Property Name="Condition" Type="xml" />
+          <Property Name="TerminationDate" Type="date" />
+        </EntityType>
+        <EntityType Name="SensorCondition">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ScenarioID" Type="int" Nullable="false" />
+          <Property Name="SensorID" Type="int" Nullable="false" />
+          <Property Name="SignID" Type="int" Nullable="false" />
+          <Property Name="Value" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SensorMN">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TypeID" Type="int" Nullable="false" />
+          <Property Name="RoomID" Type="int" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SysUser">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Passport" Type="nvarchar" MaxLength="11" Nullable="false" />
+          <Property Name="Surname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Patronymic" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Birthdate" Type="date" Nullable="false" />
+          <Property Name="Sex" Type="int" Nullable="false" />
+          <Property Name="UserType" Type="int" Nullable="false" />
+          <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TerminationDate" Type="date" />
+        </EntityType>
+        <EntityType Name="TimeWeatherCondition">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ScenarioID" Type="int" Nullable="false" />
+          <Property Name="ValueID" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_AtomicCondition_ClassifierTimeWeather">
+          <End Role="ClassifierTimeWeather" Type="Self.ClassifierTimeWeather" Multiplicity="1" />
+          <End Role="TimeWeatherCondition" Type="Self.TimeWeatherCondition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClassifierTimeWeather">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TimeWeatherCondition">
+              <PropertyRef Name="ValueID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AtomicCondition_Scenario">
+          <End Role="Scenario" Type="Self.Scenario" Multiplicity="1" />
+          <End Role="TimeWeatherCondition" Type="Self.TimeWeatherCondition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Scenario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TimeWeatherCondition">
+              <PropertyRef Name="ScenarioID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClassifierSubTypeThing_ClassifierTypeThing">
+          <End Role="ClassifierTypeThing" Type="Self.ClassifierTypeThing" Multiplicity="1" />
+          <End Role="ClassifierSubTypeThing" Type="Self.ClassifierSubTypeThing" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClassifierTypeThing">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ClassifierSubTypeThing">
+              <PropertyRef Name="TypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClassifierThingCommand_ClassifierSubTypeThing">
+          <End Role="ClassifierSubTypeThing" Type="Self.ClassifierSubTypeThing" Multiplicity="1" />
+          <End Role="ClassifierThingCommand" Type="Self.ClassifierThingCommand" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClassifierSubTypeThing">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ClassifierThingCommand">
+              <PropertyRef Name="SubTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClassifierTimeWeather_ClassifierValue">
+          <End Role="ClassifierValue" Type="Self.ClassifierValue" Multiplicity="1" />
+          <End Role="ClassifierTimeWeather" Type="Self.ClassifierTimeWeather" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClassifierValue">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ClassifierTimeWeather">
+              <PropertyRef Name="TypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Command_Scenario">
+          <End Role="Scenario" Type="Self.Scenario" Multiplicity="1" />
+          <End Role="Command" Type="Self.Command" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Scenario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Command">
+              <PropertyRef Name="ScenarioID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Command_SmartThing">
+          <End Role="Actuator" Type="Self.Actuator" Multiplicity="1" />
+          <End Role="Command" Type="Self.Command" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Actuator">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Command">
+              <PropertyRef Name="ThingID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Scenario_SysUser">
+          <End Role="SysUser" Type="Self.SysUser" Multiplicity="1" />
+          <End Role="Scenario" Type="Self.Scenario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SysUser">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Scenario">
+              <PropertyRef Name="Author" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SensorCondition_ClassifierSign">
+          <End Role="ClassifierSign" Type="Self.ClassifierSign" Multiplicity="1" />
+          <End Role="SensorCondition" Type="Self.SensorCondition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClassifierSign">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="SensorCondition">
+              <PropertyRef Name="SignID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SensorCondition_Scenario">
+          <End Role="Scenario" Type="Self.Scenario" Multiplicity="1" />
+          <End Role="SensorCondition" Type="Self.SensorCondition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Scenario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="SensorCondition">
+              <PropertyRef Name="ScenarioID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SensorCondition_SensorMN">
+          <End Role="SensorMN" Type="Self.SensorMN" Multiplicity="1" />
+          <End Role="SensorCondition" Type="Self.SensorCondition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SensorMN">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="SensorCondition">
+              <PropertyRef Name="SensorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SensorMN_ClassifierSensor">
+          <End Role="ClassifierSensor" Type="Self.ClassifierSensor" Multiplicity="1" />
+          <End Role="SensorMN" Type="Self.SensorMN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClassifierSensor">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="SensorMN">
+              <PropertyRef Name="TypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SensorMN_Room">
+          <End Role="Room" Type="Self.Room" Multiplicity="1" />
+          <End Role="SensorMN" Type="Self.SensorMN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Room">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="SensorMN">
+              <PropertyRef Name="RoomID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SmartThing_ClassifierSubTypeThing">
+          <End Role="ClassifierSubTypeThing" Type="Self.ClassifierSubTypeThing" Multiplicity="1" />
+          <End Role="Actuator" Type="Self.Actuator" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClassifierSubTypeThing">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Actuator">
+              <PropertyRef Name="SubType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SmartThing_Room">
+          <End Role="Room" Type="Self.Room" Multiplicity="1" />
+          <End Role="Actuator" Type="Self.Actuator" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Room">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Actuator">
+              <PropertyRef Name="Room" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SysUser_ClassifierSex">
+          <End Role="ClassifierSex" Type="Self.ClassifierSex" Multiplicity="1" />
+          <End Role="SysUser" Type="Self.SysUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClassifierSex">
+              <PropertyRef Name="SexID" />
+            </Principal>
+            <Dependent Role="SysUser">
+              <PropertyRef Name="Sex" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SysUser_ClassifierUserType">
+          <End Role="ClassifierUserType" Type="Self.ClassifierUserType" Multiplicity="1" />
+          <End Role="SysUser" Type="Self.SysUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClassifierUserType">
+              <PropertyRef Name="TypeID" />
+            </Principal>
+            <Dependent Role="SysUser">
+              <PropertyRef Name="UserType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="WebScenarioAccountingModelStoreContainer">
+          <EntitySet Name="Actuator" EntityType="Self.Actuator" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClassifierSensor" EntityType="Self.ClassifierSensor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClassifierSex" EntityType="Self.ClassifierSex" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClassifierSign" EntityType="Self.ClassifierSign" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClassifierSubTypeThing" EntityType="Self.ClassifierSubTypeThing" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClassifierThingCommand" EntityType="Self.ClassifierThingCommand" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClassifierTimeWeather" EntityType="Self.ClassifierTimeWeather" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClassifierTypeThing" EntityType="Self.ClassifierTypeThing" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClassifierUserType" EntityType="Self.ClassifierUserType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClassifierValue" EntityType="Self.ClassifierValue" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Command" EntityType="Self.Command" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Room" EntityType="Self.Room" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Scenario" EntityType="Self.Scenario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SensorCondition" EntityType="Self.SensorCondition" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SensorMN" EntityType="Self.SensorMN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SysUser" EntityType="Self.SysUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TimeWeatherCondition" EntityType="Self.TimeWeatherCondition" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_AtomicCondition_ClassifierTimeWeather" Association="Self.FK_AtomicCondition_ClassifierTimeWeather">
+            <End Role="ClassifierTimeWeather" EntitySet="ClassifierTimeWeather" />
+            <End Role="TimeWeatherCondition" EntitySet="TimeWeatherCondition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AtomicCondition_Scenario" Association="Self.FK_AtomicCondition_Scenario">
+            <End Role="Scenario" EntitySet="Scenario" />
+            <End Role="TimeWeatherCondition" EntitySet="TimeWeatherCondition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClassifierSubTypeThing_ClassifierTypeThing" Association="Self.FK_ClassifierSubTypeThing_ClassifierTypeThing">
+            <End Role="ClassifierTypeThing" EntitySet="ClassifierTypeThing" />
+            <End Role="ClassifierSubTypeThing" EntitySet="ClassifierSubTypeThing" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClassifierThingCommand_ClassifierSubTypeThing" Association="Self.FK_ClassifierThingCommand_ClassifierSubTypeThing">
+            <End Role="ClassifierSubTypeThing" EntitySet="ClassifierSubTypeThing" />
+            <End Role="ClassifierThingCommand" EntitySet="ClassifierThingCommand" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClassifierTimeWeather_ClassifierValue" Association="Self.FK_ClassifierTimeWeather_ClassifierValue">
+            <End Role="ClassifierValue" EntitySet="ClassifierValue" />
+            <End Role="ClassifierTimeWeather" EntitySet="ClassifierTimeWeather" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Command_Scenario" Association="Self.FK_Command_Scenario">
+            <End Role="Scenario" EntitySet="Scenario" />
+            <End Role="Command" EntitySet="Command" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Command_SmartThing" Association="Self.FK_Command_SmartThing">
+            <End Role="Actuator" EntitySet="Actuator" />
+            <End Role="Command" EntitySet="Command" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Scenario_SysUser" Association="Self.FK_Scenario_SysUser">
+            <End Role="SysUser" EntitySet="SysUser" />
+            <End Role="Scenario" EntitySet="Scenario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SensorCondition_ClassifierSign" Association="Self.FK_SensorCondition_ClassifierSign">
+            <End Role="ClassifierSign" EntitySet="ClassifierSign" />
+            <End Role="SensorCondition" EntitySet="SensorCondition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SensorCondition_Scenario" Association="Self.FK_SensorCondition_Scenario">
+            <End Role="Scenario" EntitySet="Scenario" />
+            <End Role="SensorCondition" EntitySet="SensorCondition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SensorCondition_SensorMN" Association="Self.FK_SensorCondition_SensorMN">
+            <End Role="SensorMN" EntitySet="SensorMN" />
+            <End Role="SensorCondition" EntitySet="SensorCondition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SensorMN_ClassifierSensor" Association="Self.FK_SensorMN_ClassifierSensor">
+            <End Role="ClassifierSensor" EntitySet="ClassifierSensor" />
+            <End Role="SensorMN" EntitySet="SensorMN" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SensorMN_Room" Association="Self.FK_SensorMN_Room">
+            <End Role="Room" EntitySet="Room" />
+            <End Role="SensorMN" EntitySet="SensorMN" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SmartThing_ClassifierSubTypeThing" Association="Self.FK_SmartThing_ClassifierSubTypeThing">
+            <End Role="ClassifierSubTypeThing" EntitySet="ClassifierSubTypeThing" />
+            <End Role="Actuator" EntitySet="Actuator" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SmartThing_Room" Association="Self.FK_SmartThing_Room">
+            <End Role="Room" EntitySet="Room" />
+            <End Role="Actuator" EntitySet="Actuator" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SysUser_ClassifierSex" Association="Self.FK_SysUser_ClassifierSex">
+            <End Role="ClassifierSex" EntitySet="ClassifierSex" />
+            <End Role="SysUser" EntitySet="SysUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SysUser_ClassifierUserType" Association="Self.FK_SysUser_ClassifierUserType">
+            <End Role="ClassifierUserType" EntitySet="ClassifierUserType" />
+            <End Role="SysUser" EntitySet="SysUser" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="WebScenarioAccountingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Actuator">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Manufacturer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Room" Type="Int32" Nullable="false" />
+          <Property Name="SubType" Type="Int32" Nullable="false" />
+          <Property Name="TerminationDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Commands" Relationship="Self.FK_Command_SmartThing" FromRole="Actuator" ToRole="Command" />
+          <NavigationProperty Name="ClassifierSubTypeThing" Relationship="Self.FK_SmartThing_ClassifierSubTypeThing" FromRole="Actuator" ToRole="ClassifierSubTypeThing" />
+          <NavigationProperty Name="Room1" Relationship="Self.FK_SmartThing_Room" FromRole="Actuator" ToRole="Room" />
+        </EntityType>
+        <EntityType Name="ClassifierSensor">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="SensorMNs" Relationship="Self.FK_SensorMN_ClassifierSensor" FromRole="ClassifierSensor" ToRole="SensorMN" />
+        </EntityType>
+        <EntityType Name="ClassifierSex">
+          <Key>
+            <PropertyRef Name="SexID" />
+          </Key>
+          <Property Name="SexID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SexName" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="SysUsers" Relationship="Self.FK_SysUser_ClassifierSex" FromRole="ClassifierSex" ToRole="SysUser" />
+        </EntityType>
+        <EntityType Name="ClassifierSign">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SignValue" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="SensorConditions" Relationship="Self.FK_SensorCondition_ClassifierSign" FromRole="ClassifierSign" ToRole="SensorCondition" />
+        </EntityType>
+        <EntityType Name="ClassifierSubTypeThing">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TypeID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Actuators" Relationship="Self.FK_SmartThing_ClassifierSubTypeThing" FromRole="ClassifierSubTypeThing" ToRole="Actuator" />
+          <NavigationProperty Name="ClassifierTypeThing" Relationship="Self.FK_ClassifierSubTypeThing_ClassifierTypeThing" FromRole="ClassifierSubTypeThing" ToRole="ClassifierTypeThing" />
+          <NavigationProperty Name="ClassifierThingCommands" Relationship="Self.FK_ClassifierThingCommand_ClassifierSubTypeThing" FromRole="ClassifierSubTypeThing" ToRole="ClassifierThingCommand" />
+        </EntityType>
+        <EntityType Name="ClassifierThingCommand">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SubTypeID" Type="Int32" Nullable="false" />
+          <Property Name="Text" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="ClassifierSubTypeThing" Relationship="Self.FK_ClassifierThingCommand_ClassifierSubTypeThing" FromRole="ClassifierThingCommand" ToRole="ClassifierSubTypeThing" />
+        </EntityType>
+        <EntityType Name="ClassifierTimeWeather">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TypeID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TimeWeatherConditions" Relationship="Self.FK_AtomicCondition_ClassifierTimeWeather" FromRole="ClassifierTimeWeather" ToRole="TimeWeatherCondition" />
+          <NavigationProperty Name="ClassifierValue" Relationship="Self.FK_ClassifierTimeWeather_ClassifierValue" FromRole="ClassifierTimeWeather" ToRole="ClassifierValue" />
+        </EntityType>
+        <EntityType Name="ClassifierTypeThing">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="ClassifierSubTypeThings" Relationship="Self.FK_ClassifierSubTypeThing_ClassifierTypeThing" FromRole="ClassifierTypeThing" ToRole="ClassifierSubTypeThing" />
+        </EntityType>
+        <EntityType Name="ClassifierUserType">
+          <Key>
+            <PropertyRef Name="TypeID" />
+          </Key>
+          <Property Name="TypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="SysUsers" Relationship="Self.FK_SysUser_ClassifierUserType" FromRole="ClassifierUserType" ToRole="SysUser" />
+        </EntityType>
+        <EntityType Name="ClassifierValue">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Label" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="ClassifierTimeWeathers" Relationship="Self.FK_ClassifierTimeWeather_ClassifierValue" FromRole="ClassifierValue" ToRole="ClassifierTimeWeather" />
+        </EntityType>
+        <EntityType Name="Command">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ScenarioID" Type="Int32" Nullable="false" />
+          <Property Name="isElse" Type="Boolean" Nullable="false" />
+          <Property Name="ThingID" Type="Int32" Nullable="false" />
+          <Property Name="CommandID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Actuator" Relationship="Self.FK_Command_SmartThing" FromRole="Command" ToRole="Actuator" />
+          <NavigationProperty Name="Scenario" Relationship="Self.FK_Command_Scenario" FromRole="Command" ToRole="Scenario" />
+        </EntityType>
+        <EntityType Name="Room">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Floor" Type="Int32" Nullable="false" />
+          <Property Name="Area" Type="Double" Nullable="false" />
+          <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="TerminationDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Actuators" Relationship="Self.FK_SmartThing_Room" FromRole="Room" ToRole="Actuator" />
+          <NavigationProperty Name="SensorMNs" Relationship="Self.FK_SensorMN_Room" FromRole="Room" ToRole="SensorMN" />
+        </EntityType>
+        <EntityType Name="Scenario">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Author" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Condition" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TerminationDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Commands" Relationship="Self.FK_Command_Scenario" FromRole="Scenario" ToRole="Command" />
+          <NavigationProperty Name="TimeWeatherConditions" Relationship="Self.FK_AtomicCondition_Scenario" FromRole="Scenario" ToRole="TimeWeatherCondition" />
+          <NavigationProperty Name="SysUser" Relationship="Self.FK_Scenario_SysUser" FromRole="Scenario" ToRole="SysUser" />
+          <NavigationProperty Name="SensorConditions" Relationship="Self.FK_SensorCondition_Scenario" FromRole="Scenario" ToRole="SensorCondition" />
+        </EntityType>
+        <EntityType Name="SensorCondition">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ScenarioID" Type="Int32" Nullable="false" />
+          <Property Name="SensorID" Type="Int32" Nullable="false" />
+          <Property Name="SignID" Type="Int32" Nullable="false" />
+          <Property Name="Value" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ClassifierSign" Relationship="Self.FK_SensorCondition_ClassifierSign" FromRole="SensorCondition" ToRole="ClassifierSign" />
+          <NavigationProperty Name="Scenario" Relationship="Self.FK_SensorCondition_Scenario" FromRole="SensorCondition" ToRole="Scenario" />
+          <NavigationProperty Name="SensorMN" Relationship="Self.FK_SensorCondition_SensorMN" FromRole="SensorCondition" ToRole="SensorMN" />
+        </EntityType>
+        <EntityType Name="SensorMN">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TypeID" Type="Int32" Nullable="false" />
+          <Property Name="RoomID" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="ClassifierSensor" Relationship="Self.FK_SensorMN_ClassifierSensor" FromRole="SensorMN" ToRole="ClassifierSensor" />
+          <NavigationProperty Name="Room" Relationship="Self.FK_SensorMN_Room" FromRole="SensorMN" ToRole="Room" />
+          <NavigationProperty Name="SensorConditions" Relationship="Self.FK_SensorCondition_SensorMN" FromRole="SensorMN" ToRole="SensorCondition" />
+        </EntityType>
+        <EntityType Name="SysUser">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Passport" Type="String" MaxLength="11" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Birthdate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Sex" Type="Int32" Nullable="false" />
+          <Property Name="UserType" Type="Int32" Nullable="false" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TerminationDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="ClassifierSex" Relationship="Self.FK_SysUser_ClassifierSex" FromRole="SysUser" ToRole="ClassifierSex" />
+          <NavigationProperty Name="ClassifierUserType" Relationship="Self.FK_SysUser_ClassifierUserType" FromRole="SysUser" ToRole="ClassifierUserType" />
+          <NavigationProperty Name="Scenarios" Relationship="Self.FK_Scenario_SysUser" FromRole="SysUser" ToRole="Scenario" />
+        </EntityType>
+        <EntityType Name="TimeWeatherCondition">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ScenarioID" Type="Int32" Nullable="false" />
+          <Property Name="ValueID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ClassifierTimeWeather" Relationship="Self.FK_AtomicCondition_ClassifierTimeWeather" FromRole="TimeWeatherCondition" ToRole="ClassifierTimeWeather" />
+          <NavigationProperty Name="Scenario" Relationship="Self.FK_AtomicCondition_Scenario" FromRole="TimeWeatherCondition" ToRole="Scenario" />
+        </EntityType>
+        <Association Name="FK_Command_SmartThing">
+          <End Role="Actuator" Type="Self.Actuator" Multiplicity="1" />
+          <End Role="Command" Type="Self.Command" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Actuator">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Command">
+              <PropertyRef Name="ThingID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SmartThing_ClassifierSubTypeThing">
+          <End Role="ClassifierSubTypeThing" Type="Self.ClassifierSubTypeThing" Multiplicity="1" />
+          <End Role="Actuator" Type="Self.Actuator" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClassifierSubTypeThing">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Actuator">
+              <PropertyRef Name="SubType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SmartThing_Room">
+          <End Role="Room" Type="Self.Room" Multiplicity="1" />
+          <End Role="Actuator" Type="Self.Actuator" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Room">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Actuator">
+              <PropertyRef Name="Room" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SensorMN_ClassifierSensor">
+          <End Role="ClassifierSensor" Type="Self.ClassifierSensor" Multiplicity="1" />
+          <End Role="SensorMN" Type="Self.SensorMN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClassifierSensor">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="SensorMN">
+              <PropertyRef Name="TypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SysUser_ClassifierSex">
+          <End Role="ClassifierSex" Type="Self.ClassifierSex" Multiplicity="1" />
+          <End Role="SysUser" Type="Self.SysUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClassifierSex">
+              <PropertyRef Name="SexID" />
+            </Principal>
+            <Dependent Role="SysUser">
+              <PropertyRef Name="Sex" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SensorCondition_ClassifierSign">
+          <End Role="ClassifierSign" Type="Self.ClassifierSign" Multiplicity="1" />
+          <End Role="SensorCondition" Type="Self.SensorCondition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClassifierSign">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="SensorCondition">
+              <PropertyRef Name="SignID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClassifierSubTypeThing_ClassifierTypeThing">
+          <End Role="ClassifierTypeThing" Type="Self.ClassifierTypeThing" Multiplicity="1" />
+          <End Role="ClassifierSubTypeThing" Type="Self.ClassifierSubTypeThing" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClassifierTypeThing">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ClassifierSubTypeThing">
+              <PropertyRef Name="TypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClassifierThingCommand_ClassifierSubTypeThing">
+          <End Role="ClassifierSubTypeThing" Type="Self.ClassifierSubTypeThing" Multiplicity="1" />
+          <End Role="ClassifierThingCommand" Type="Self.ClassifierThingCommand" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClassifierSubTypeThing">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ClassifierThingCommand">
+              <PropertyRef Name="SubTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AtomicCondition_ClassifierTimeWeather">
+          <End Role="ClassifierTimeWeather" Type="Self.ClassifierTimeWeather" Multiplicity="1" />
+          <End Role="TimeWeatherCondition" Type="Self.TimeWeatherCondition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClassifierTimeWeather">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TimeWeatherCondition">
+              <PropertyRef Name="ValueID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClassifierTimeWeather_ClassifierValue">
+          <End Role="ClassifierValue" Type="Self.ClassifierValue" Multiplicity="1" />
+          <End Role="ClassifierTimeWeather" Type="Self.ClassifierTimeWeather" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClassifierValue">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ClassifierTimeWeather">
+              <PropertyRef Name="TypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SysUser_ClassifierUserType">
+          <End Role="ClassifierUserType" Type="Self.ClassifierUserType" Multiplicity="1" />
+          <End Role="SysUser" Type="Self.SysUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClassifierUserType">
+              <PropertyRef Name="TypeID" />
+            </Principal>
+            <Dependent Role="SysUser">
+              <PropertyRef Name="UserType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Command_Scenario">
+          <End Role="Scenario" Type="Self.Scenario" Multiplicity="1" />
+          <End Role="Command" Type="Self.Command" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Scenario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Command">
+              <PropertyRef Name="ScenarioID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SensorMN_Room">
+          <End Role="Room" Type="Self.Room" Multiplicity="1" />
+          <End Role="SensorMN" Type="Self.SensorMN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Room">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="SensorMN">
+              <PropertyRef Name="RoomID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AtomicCondition_Scenario">
+          <End Role="Scenario" Type="Self.Scenario" Multiplicity="1" />
+          <End Role="TimeWeatherCondition" Type="Self.TimeWeatherCondition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Scenario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TimeWeatherCondition">
+              <PropertyRef Name="ScenarioID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Scenario_SysUser">
+          <End Role="SysUser" Type="Self.SysUser" Multiplicity="1" />
+          <End Role="Scenario" Type="Self.Scenario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SysUser">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Scenario">
+              <PropertyRef Name="Author" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SensorCondition_Scenario">
+          <End Role="Scenario" Type="Self.Scenario" Multiplicity="1" />
+          <End Role="SensorCondition" Type="Self.SensorCondition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Scenario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="SensorCondition">
+              <PropertyRef Name="ScenarioID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SensorCondition_SensorMN">
+          <End Role="SensorMN" Type="Self.SensorMN" Multiplicity="1" />
+          <End Role="SensorCondition" Type="Self.SensorCondition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SensorMN">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="SensorCondition">
+              <PropertyRef Name="SensorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="WebScenarioAccountingEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Actuators" EntityType="Self.Actuator" />
+          <EntitySet Name="ClassifierSensors" EntityType="Self.ClassifierSensor" />
+          <EntitySet Name="ClassifierSexes" EntityType="Self.ClassifierSex" />
+          <EntitySet Name="ClassifierSigns" EntityType="Self.ClassifierSign" />
+          <EntitySet Name="ClassifierSubTypeThings" EntityType="Self.ClassifierSubTypeThing" />
+          <EntitySet Name="ClassifierThingCommands" EntityType="Self.ClassifierThingCommand" />
+          <EntitySet Name="ClassifierTimeWeathers" EntityType="Self.ClassifierTimeWeather" />
+          <EntitySet Name="ClassifierTypeThings" EntityType="Self.ClassifierTypeThing" />
+          <EntitySet Name="ClassifierUserTypes" EntityType="Self.ClassifierUserType" />
+          <EntitySet Name="ClassifierValues" EntityType="Self.ClassifierValue" />
+          <EntitySet Name="Commands" EntityType="Self.Command" />
+          <EntitySet Name="Rooms" EntityType="Self.Room" />
+          <EntitySet Name="Scenarios" EntityType="Self.Scenario" />
+          <EntitySet Name="SensorConditions" EntityType="Self.SensorCondition" />
+          <EntitySet Name="SensorMNs" EntityType="Self.SensorMN" />
+          <EntitySet Name="SysUsers" EntityType="Self.SysUser" />
+          <EntitySet Name="TimeWeatherConditions" EntityType="Self.TimeWeatherCondition" />
+          <AssociationSet Name="FK_Command_SmartThing" Association="Self.FK_Command_SmartThing">
+            <End Role="Actuator" EntitySet="Actuators" />
+            <End Role="Command" EntitySet="Commands" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SmartThing_ClassifierSubTypeThing" Association="Self.FK_SmartThing_ClassifierSubTypeThing">
+            <End Role="ClassifierSubTypeThing" EntitySet="ClassifierSubTypeThings" />
+            <End Role="Actuator" EntitySet="Actuators" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SmartThing_Room" Association="Self.FK_SmartThing_Room">
+            <End Role="Room" EntitySet="Rooms" />
+            <End Role="Actuator" EntitySet="Actuators" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SensorMN_ClassifierSensor" Association="Self.FK_SensorMN_ClassifierSensor">
+            <End Role="ClassifierSensor" EntitySet="ClassifierSensors" />
+            <End Role="SensorMN" EntitySet="SensorMNs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SysUser_ClassifierSex" Association="Self.FK_SysUser_ClassifierSex">
+            <End Role="ClassifierSex" EntitySet="ClassifierSexes" />
+            <End Role="SysUser" EntitySet="SysUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SensorCondition_ClassifierSign" Association="Self.FK_SensorCondition_ClassifierSign">
+            <End Role="ClassifierSign" EntitySet="ClassifierSigns" />
+            <End Role="SensorCondition" EntitySet="SensorConditions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClassifierSubTypeThing_ClassifierTypeThing" Association="Self.FK_ClassifierSubTypeThing_ClassifierTypeThing">
+            <End Role="ClassifierTypeThing" EntitySet="ClassifierTypeThings" />
+            <End Role="ClassifierSubTypeThing" EntitySet="ClassifierSubTypeThings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClassifierThingCommand_ClassifierSubTypeThing" Association="Self.FK_ClassifierThingCommand_ClassifierSubTypeThing">
+            <End Role="ClassifierSubTypeThing" EntitySet="ClassifierSubTypeThings" />
+            <End Role="ClassifierThingCommand" EntitySet="ClassifierThingCommands" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AtomicCondition_ClassifierTimeWeather" Association="Self.FK_AtomicCondition_ClassifierTimeWeather">
+            <End Role="ClassifierTimeWeather" EntitySet="ClassifierTimeWeathers" />
+            <End Role="TimeWeatherCondition" EntitySet="TimeWeatherConditions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClassifierTimeWeather_ClassifierValue" Association="Self.FK_ClassifierTimeWeather_ClassifierValue">
+            <End Role="ClassifierValue" EntitySet="ClassifierValues" />
+            <End Role="ClassifierTimeWeather" EntitySet="ClassifierTimeWeathers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SysUser_ClassifierUserType" Association="Self.FK_SysUser_ClassifierUserType">
+            <End Role="ClassifierUserType" EntitySet="ClassifierUserTypes" />
+            <End Role="SysUser" EntitySet="SysUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Command_Scenario" Association="Self.FK_Command_Scenario">
+            <End Role="Scenario" EntitySet="Scenarios" />
+            <End Role="Command" EntitySet="Commands" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SensorMN_Room" Association="Self.FK_SensorMN_Room">
+            <End Role="Room" EntitySet="Rooms" />
+            <End Role="SensorMN" EntitySet="SensorMNs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AtomicCondition_Scenario" Association="Self.FK_AtomicCondition_Scenario">
+            <End Role="Scenario" EntitySet="Scenarios" />
+            <End Role="TimeWeatherCondition" EntitySet="TimeWeatherConditions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Scenario_SysUser" Association="Self.FK_Scenario_SysUser">
+            <End Role="SysUser" EntitySet="SysUsers" />
+            <End Role="Scenario" EntitySet="Scenarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SensorCondition_Scenario" Association="Self.FK_SensorCondition_Scenario">
+            <End Role="Scenario" EntitySet="Scenarios" />
+            <End Role="SensorCondition" EntitySet="SensorConditions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SensorCondition_SensorMN" Association="Self.FK_SensorCondition_SensorMN">
+            <End Role="SensorMN" EntitySet="SensorMNs" />
+            <End Role="SensorCondition" EntitySet="SensorConditions" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="WebScenarioAccountingModelStoreContainer" CdmEntityContainer="WebScenarioAccountingEntities">
+          <EntitySetMapping Name="Actuators">
+            <EntityTypeMapping TypeName="WebScenarioAccountingModel.Actuator">
+              <MappingFragment StoreEntitySet="Actuator">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Manufacturer" ColumnName="Manufacturer" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Room" ColumnName="Room" />
+                <ScalarProperty Name="SubType" ColumnName="SubType" />
+                <ScalarProperty Name="TerminationDate" ColumnName="TerminationDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClassifierSensors">
+            <EntityTypeMapping TypeName="WebScenarioAccountingModel.ClassifierSensor">
+              <MappingFragment StoreEntitySet="ClassifierSensor">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClassifierSexes">
+            <EntityTypeMapping TypeName="WebScenarioAccountingModel.ClassifierSex">
+              <MappingFragment StoreEntitySet="ClassifierSex">
+                <ScalarProperty Name="SexID" ColumnName="SexID" />
+                <ScalarProperty Name="SexName" ColumnName="SexName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClassifierSigns">
+            <EntityTypeMapping TypeName="WebScenarioAccountingModel.ClassifierSign">
+              <MappingFragment StoreEntitySet="ClassifierSign">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="SignValue" ColumnName="SignValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClassifierSubTypeThings">
+            <EntityTypeMapping TypeName="WebScenarioAccountingModel.ClassifierSubTypeThing">
+              <MappingFragment StoreEntitySet="ClassifierSubTypeThing">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="TypeID" ColumnName="TypeID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClassifierThingCommands">
+            <EntityTypeMapping TypeName="WebScenarioAccountingModel.ClassifierThingCommand">
+              <MappingFragment StoreEntitySet="ClassifierThingCommand">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="SubTypeID" ColumnName="SubTypeID" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClassifierTimeWeathers">
+            <EntityTypeMapping TypeName="WebScenarioAccountingModel.ClassifierTimeWeather">
+              <MappingFragment StoreEntitySet="ClassifierTimeWeather">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="TypeID" ColumnName="TypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClassifierTypeThings">
+            <EntityTypeMapping TypeName="WebScenarioAccountingModel.ClassifierTypeThing">
+              <MappingFragment StoreEntitySet="ClassifierTypeThing">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClassifierUserTypes">
+            <EntityTypeMapping TypeName="WebScenarioAccountingModel.ClassifierUserType">
+              <MappingFragment StoreEntitySet="ClassifierUserType">
+                <ScalarProperty Name="TypeID" ColumnName="TypeID" />
+                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClassifierValues">
+            <EntityTypeMapping TypeName="WebScenarioAccountingModel.ClassifierValue">
+              <MappingFragment StoreEntitySet="ClassifierValue">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Label" ColumnName="Label" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Commands">
+            <EntityTypeMapping TypeName="WebScenarioAccountingModel.Command">
+              <MappingFragment StoreEntitySet="Command">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ScenarioID" ColumnName="ScenarioID" />
+                <ScalarProperty Name="isElse" ColumnName="isElse" />
+                <ScalarProperty Name="ThingID" ColumnName="ThingID" />
+                <ScalarProperty Name="CommandID" ColumnName="CommandID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rooms">
+            <EntityTypeMapping TypeName="WebScenarioAccountingModel.Room">
+              <MappingFragment StoreEntitySet="Room">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Floor" ColumnName="Floor" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="TerminationDate" ColumnName="TerminationDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Scenarios">
+            <EntityTypeMapping TypeName="WebScenarioAccountingModel.Scenario">
+              <MappingFragment StoreEntitySet="Scenario">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Author" ColumnName="Author" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="Condition" ColumnName="Condition" />
+                <ScalarProperty Name="TerminationDate" ColumnName="TerminationDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SensorConditions">
+            <EntityTypeMapping TypeName="WebScenarioAccountingModel.SensorCondition">
+              <MappingFragment StoreEntitySet="SensorCondition">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ScenarioID" ColumnName="ScenarioID" />
+                <ScalarProperty Name="SensorID" ColumnName="SensorID" />
+                <ScalarProperty Name="SignID" ColumnName="SignID" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SensorMNs">
+            <EntityTypeMapping TypeName="WebScenarioAccountingModel.SensorMN">
+              <MappingFragment StoreEntitySet="SensorMN">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="TypeID" ColumnName="TypeID" />
+                <ScalarProperty Name="RoomID" ColumnName="RoomID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SysUsers">
+            <EntityTypeMapping TypeName="WebScenarioAccountingModel.SysUser">
+              <MappingFragment StoreEntitySet="SysUser">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Passport" ColumnName="Passport" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+                <ScalarProperty Name="Birthdate" ColumnName="Birthdate" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="UserType" ColumnName="UserType" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="TerminationDate" ColumnName="TerminationDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TimeWeatherConditions">
+            <EntityTypeMapping TypeName="WebScenarioAccountingModel.TimeWeatherCondition">
+              <MappingFragment StoreEntitySet="TimeWeatherCondition">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ScenarioID" ColumnName="ScenarioID" />
+                <ScalarProperty Name="ValueID" ColumnName="ValueID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

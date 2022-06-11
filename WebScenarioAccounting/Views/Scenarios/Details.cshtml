@@ -1,0 +1,89 @@
+﻿@model WebScenarioAccounting.Scenario
+
+@{
+    ViewBag.Title = "Дополнительно";
+}
+
+<h2>О сценарии</h2>
+
+<div>
+    <h4> О сценарии известно следующее: </h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreationDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreationDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Condition)
+        </dt>
+
+        <dd>
+            @ViewBag.ConditionString
+            <!-- Html.DisplayFor(model => model.Condition) -->
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TerminationDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TerminationDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SysUser.Passport)
+        </dt>
+
+        <!--
+           <dd>
+        Html.DisplayFor(model => model.SysUser.Passport)
+    </dd>
+    -->
+
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Изменить", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Вернуться к списку", "Index")
+</p>
+
+<p>
+    Условие @ViewBag.CondStr
+
+    Ниже представлены сами условия с их индексами.
+</p>
+
+<div class="container">
+    <div class="row">
+        <table class="table">
+        
+        </table>
+    </div>
+    <div class="row">
+        <table class="table">
+        
+        </table>
+    </div>
+</div>

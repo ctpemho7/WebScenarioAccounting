@@ -1,0 +1,50 @@
+﻿@model WebScenarioAccounting.SensorCondition
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>SensorCondition</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Value)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Value)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ClassifierSign.SignValue)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClassifierSign.SignValue)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Scenario.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Scenario.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SensorMN.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SensorMN.Description)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

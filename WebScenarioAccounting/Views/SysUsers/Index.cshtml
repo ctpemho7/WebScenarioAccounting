@@ -1,0 +1,83 @@
+﻿@model IEnumerable<WebScenarioAccounting.SysUser>
+
+@{
+    ViewBag.Title = "Пользователи";
+}
+
+<h2>Пользователи системы</h2>
+
+<input class="btn btn-primary" type="button" value="Создать" onclick="location.href='@Url.Action("Create", "SysUsers")'" />
+<p></p>
+<!--
+    <p>
+    Html.ActionLink("Создать", "Create")
+</p>
+    -->
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Passport)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Surname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Patronymic)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Birthdate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Login)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.ClassifierSex.SexName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ClassifierUserType.TypeName)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Passport)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Surname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Patronymic)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Birthdate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Login)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.ClassifierSex.SexName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClassifierUserType.TypeName)
+            </td>
+            <td>
+                @Html.ActionLink("Изменить", "Edit", new { id = item.id }) |
+                @Html.ActionLink("Удалить", "Delete", new { id = item.id }) |
+                @Html.ActionLink("Ещё..", "Details", new { id = item.id })
+            </td>
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,58 @@
+﻿@model WebScenarioAccounting.Actuator
+
+@{
+    ViewBag.Title = "Дополнительно";
+}
+
+<h2>Об актуаторе</h2>
+
+<div>
+    <h4> Актуатор со следующими характеристиками: </h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Manufacturer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Manufacturer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TerminationDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TerminationDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ClassifierSubTypeThing.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClassifierSubTypeThing.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Room1.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Room1.Name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Изменить", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Вернуться к списку", "Index")
+</p>

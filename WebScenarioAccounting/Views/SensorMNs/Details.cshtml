@@ -1,0 +1,42 @@
+﻿@model WebScenarioAccounting.SensorMN
+
+@{
+    ViewBag.Title = "Дополнительно";
+}
+
+<h2>О датчике</h2>
+
+<div>
+    <h4>Датчик со следующими характеристиками:</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ClassifierSensor.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClassifierSensor.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Room.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Room.Name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Изменить", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Вернуться к списку", "Index")
+</p>

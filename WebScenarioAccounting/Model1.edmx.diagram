@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7157657875fc4ae0b4544c39d983e626" Name="Diagram1">
+        <EntityTypeShape EntityType="WebScenarioAccountingModel.Actuator" Width="1.5" PointX="5.25" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebScenarioAccountingModel.ClassifierSensor" Width="1.5" PointX="6" PointY="16.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebScenarioAccountingModel.ClassifierSex" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebScenarioAccountingModel.ClassifierSign" Width="1.5" PointX="8.25" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebScenarioAccountingModel.ClassifierSubTypeThing" Width="1.5" PointX="3" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebScenarioAccountingModel.ClassifierThingCommand" Width="1.5" PointX="5.25" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebScenarioAccountingModel.ClassifierTimeWeather" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebScenarioAccountingModel.ClassifierTypeThing" Width="1.5" PointX="0.75" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebScenarioAccountingModel.ClassifierUserType" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebScenarioAccountingModel.ClassifierValue" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebScenarioAccountingModel.Command" Width="1.5" PointX="7.5" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebScenarioAccountingModel.Room" Width="1.5" PointX="3" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebScenarioAccountingModel.Scenario" Width="1.5" PointX="5.25" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebScenarioAccountingModel.SensorCondition" Width="1.5" PointX="10.5" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebScenarioAccountingModel.SensorMN" Width="1.5" PointX="8.25" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebScenarioAccountingModel.SysUser" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebScenarioAccountingModel.TimeWeatherCondition" Width="1.5" PointX="7.5" PointY="1.75" IsExpanded="true" />
+        <AssociationConnector Association="WebScenarioAccountingModel.FK_Command_SmartThing" ManuallyRouted="false" />
+        <AssociationConnector Association="WebScenarioAccountingModel.FK_SmartThing_ClassifierSubTypeThing" ManuallyRouted="false" />
+        <AssociationConnector Association="WebScenarioAccountingModel.FK_SmartThing_Room" ManuallyRouted="false" />
+        <AssociationConnector Association="WebScenarioAccountingModel.FK_SensorMN_ClassifierSensor" ManuallyRouted="false" />
+        <AssociationConnector Association="WebScenarioAccountingModel.FK_SysUser_ClassifierSex" ManuallyRouted="false" />
+        <AssociationConnector Association="WebScenarioAccountingModel.FK_SensorCondition_ClassifierSign" ManuallyRouted="false" />
+        <AssociationConnector Association="WebScenarioAccountingModel.FK_ClassifierSubTypeThing_ClassifierTypeThing" ManuallyRouted="false" />
+        <AssociationConnector Association="WebScenarioAccountingModel.FK_ClassifierThingCommand_ClassifierSubTypeThing" ManuallyRouted="false" />
+        <AssociationConnector Association="WebScenarioAccountingModel.FK_AtomicCondition_ClassifierTimeWeather" ManuallyRouted="false" />
+        <AssociationConnector Association="WebScenarioAccountingModel.FK_ClassifierTimeWeather_ClassifierValue" ManuallyRouted="false" />
+        <AssociationConnector Association="WebScenarioAccountingModel.FK_SysUser_ClassifierUserType" ManuallyRouted="false" />
+        <AssociationConnector Association="WebScenarioAccountingModel.FK_Command_Scenario" ManuallyRouted="false" />
+        <AssociationConnector Association="WebScenarioAccountingModel.FK_SensorMN_Room" ManuallyRouted="false" />
+        <AssociationConnector Association="WebScenarioAccountingModel.FK_AtomicCondition_Scenario" ManuallyRouted="false" />
+        <AssociationConnector Association="WebScenarioAccountingModel.FK_Scenario_SysUser" ManuallyRouted="false" />
+        <AssociationConnector Association="WebScenarioAccountingModel.FK_SensorCondition_Scenario" ManuallyRouted="false" />
+        <AssociationConnector Association="WebScenarioAccountingModel.FK_SensorCondition_SensorMN" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
