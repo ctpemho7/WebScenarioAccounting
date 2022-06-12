@@ -35,7 +35,8 @@ namespace WebScenarioAccounting
         public string Description { get; set; }
 
         [Display(Name = "Дата создания")]
-        [DisplayFormat(DataFormatString = "{0:d}")]
+        [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
+        [DataType(DataType.Date)]
         public System.DateTime CreationDate { get; set; }
 
         [Display(Name = "Логическое условие")]

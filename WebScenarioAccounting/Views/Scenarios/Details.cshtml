@@ -52,14 +52,14 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.SysUser.Passport)
+            Автор
         </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SysUser.Surname)
+            @Html.DisplayFor(model => model.SysUser.Name)
+            @Html.DisplayFor(model => model.SysUser.Patronymic)
+        </dd>
 
-        <!--
-           <dd>
-        Html.DisplayFor(model => model.SysUser.Passport)
-    </dd>
-    -->
 
 
     </dl>
@@ -69,21 +69,205 @@
     @Html.ActionLink("Вернуться к списку", "Index")
 </p>
 
-<p>
-    Условие @ViewBag.CondStr
+<h3>
+    Ниже представлены условия с их индексами
+</h3>
+<p> </p>
 
-    Ниже представлены сами условия с их индексами.
-</p>
 
-<div class="container">
-    <div class="row">
-        <table class="table">
-        
+<div class="col-xs-6">
+    <h2 class="sub-header">Условия для датчиков (s)</h2>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <tr>
+                <th class="col-md-1">
+                    Номер условия
+                </th>
+                <th class="col-md-2">
+                    Датчик
+                </th>
+                <th class="col-md-3">
+                    Знак
+                </th>
+                <th class="col-md-4">
+                    Показания
+                </th>
+                <th></th>
+            </tr>
+            @foreach (var item in ViewBag.SensorConditions)
+            {
+                <tr>
+                    <td class="col-md-1">
+                        @item.SensorMN.RoomID
+                    </td>
+                    <td class="col-md-2ы">
+                        @item.SensorMN.Description
+                    </td>
+                    <td class="col-md-3">
+                        @item.ClassifierSign.SignValue
+                    </td>
+                    <td class="col-md-4">
+                        @item.Value
+                    </td>
+                </tr>
+            }
         </table>
     </div>
-    <div class="row">
-        <table class="table">
-        
+</div>
+
+<div class="col-xs-6">
+    <h2 class="sub-header">Внешние условия (e)</h2>
+
+    <div class="table-responsive">
+
+        <table class="table table-striped">
+            <tr>
+                <th class="col-md-1">
+                    Номер условия
+                </th>
+                <th class="col-md-2">
+                    Тип
+                </th>
+                <th class="col-md-3">
+                    Знак
+                </th>
+                <th class="col-md-4">
+                    Значение
+                </th>
+                <th></th>
+            </tr>
+            @foreach (var i in ViewBag.TimeWeatherConditions)
+            {
+                <tr>
+                    <td class="col-md-1">
+                        @i.ConditionID
+                    </td>
+                    <td class="col-md-2">
+                        @i.Name
+                    </td>
+                    <td class="col-md-3">
+                        ==
+                    </td>
+                    <td class="col-md-4">
+                        @i.Value
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+
+
+
+<div class="row">
+    <div class="col-12 col-md-8"><h3> Ниже представлены действия сценария </h3></div>
+</div>
+
+<div>
+    <h2 class="sub-header">Если условие выполняется:</h2>
+
+    <div class="table-responsive">
+
+        <table class="table table-striped">
+            <tr>
+                <th class="col-md-1">
+                    Номер актуатора
+                </th>
+                <th class="col-md-2">
+                    Производитель
+                </th>
+                <th class="col-md-3">
+                    Наименование
+                </th>
+                <th class="col-md-4">
+                    Помещение
+                </th>
+                <th class="col-md-5">
+                    Действие
+                </th>
+                <th class="col-md-6">
+                    isElse
+                </th>
+                <th></th>
+            </tr>
+            @foreach (var item in ViewBag.ActionsThen)
+            {
+                <tr>
+                    <td class="col-md-1">
+                        @item.ActuatorID
+                    </td>
+                    <td class="col-md-2">
+                        @item.Manufacturer
+                    </td>
+                    <td class="col-md-3">
+                        @item.ActuatorName
+                    </td>
+                    <td class="col-md-4">
+                        @item.RoomName
+                    </td>
+                    <td class="col-md-4">
+                        @item.CommandText
+                    </td>
+                    <td class="col-md-4">
+                        @item.isElse
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+
+<div>
+    <h2 class="sub-header">Если условие не выполняется:</h2>
+
+    <div class="table-responsive">
+
+        <table class="table table-striped">
+            <tr>
+                <th class="col-md-1">
+                    Номер актуатора
+                </th>
+                <th class="col-md-2">
+                    Производитель
+                </th>
+                <th class="col-md-3">
+                    Наименование
+                </th>
+                <th class="col-md-4">
+                    Помещение
+                </th>
+                <th class="col-md-5">
+                    Действие
+                </th>
+                <th class="col-md-6">
+                    isElse
+                </th>
+                <th></th>
+            </tr>
+            @foreach (var item in ViewBag.ActionsElse)
+            {
+                <tr>
+                    <td class="col-md-1">
+                        @item.ActuatorID
+                    </td>
+                    <td class="col-md-2">
+                        @item.Manufacturer
+                    </td>
+                    <td class="col-md-3">
+                        @item.ActuatorName
+                    </td>
+                    <td class="col-md-4">
+                        @item.RoomName
+                    </td>
+                    <td class="col-md-4">
+                        @item.CommandText
+                    </td>
+                    <td class="col-md-4">
+                        @item.isElse
+                    </td>
+                </tr>
+            }
         </table>
     </div>
 </div>
