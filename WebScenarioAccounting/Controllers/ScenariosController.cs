@@ -69,11 +69,11 @@ namespace WebScenarioAccounting.Controllers
 
 
             var acts = db.Commands.Where(s => s.ScenarioID == id)
-                .Join(db.Actuators,
+            .Join(db.Actuators,
                 f => f.ThingID,
                 s => s.id,
                 (f, s) => new { ActuatorID = f.id, ActuatorName = s.Name, Manufacturer = s.Manufacturer, RoomID = s.Room, SubTypeID = s.SubType, CommandTextID = f.CommandID, isElse = f.isElse })
-                .Join(db.Rooms,
+           .Join(db.Rooms,
                 f => f.RoomID,
                 s => s.id,
                 (f, s) => new { ActuatorID = f.ActuatorID, Manufacturer = f.Manufacturer, ActuatorName = f.ActuatorName, RoomName = s.Name, SubTypeID = f.SubTypeID, CommandTextID = f.CommandTextID, isElse = f.isElse })
